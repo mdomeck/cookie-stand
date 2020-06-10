@@ -102,6 +102,21 @@ function renderSalesInTable()
   table.appendChild(tableRow);
 }
 
+function makeFooter()
+{
+  var table = document.getElementById('salesTable');
+  var footerRow = document.createElement('tr');
+  var footerCell = document.createElement('th');
+  footerCell.textContent = 'Hourly Totals';
+  footerRow.appendChild(footerCell);
+  for(var i=0; i < renderHourTotalsToPage.length; i++){
+    footerCell = document.createElement('th');
+    footerCell.textContent = renderHourTotalsToPage[i];
+    headerRow.appendChild(headerCell);
+  }
+  table.appendChild(footerRow);
+}
+
 makeHeadings();
 seattleStore.renderNameToPage();
 seattleStore.renderSalesInTable();
