@@ -11,3 +11,14 @@ body {
     text-align: center;
     padding: 15px;
   }
+
+table {
+  border: solid #201d64 1px;
+  border-collapse: collapse;
+  margin: 20px;
+}
+th, td {
+  border: solid #201d64 1px;
+  padding: 5px;
+}
+
