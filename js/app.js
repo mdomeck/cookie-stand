@@ -56,7 +56,6 @@ function hourlyTotals() {
     theTotal += dubaiStore.hourlyStoreSales[i];
     theTotal += parisStore.hourlyStoreSales[i];
     theTotal += limaStore.hourlyStoreSales[i];
-    console.log(theTotal);
     hourlyCookiesArr.push(theTotal);
   }
   return hourlyCookiesArr;
@@ -83,6 +82,10 @@ var tokyoStore = new CookieStore('Tokyo', 3, 24, 1.2, 'TokyoTitle');
 var dubaiStore = new CookieStore('Dubai', 11, 38, 3.7, 'DubaiTitle');
 var parisStore = new CookieStore('Paris', 20, 38, 2.3, 'ParisTitle');
 var limaStore = new CookieStore('Lima', 2, 16, 4.6, 'LimaTitle');
+
+// allStores.push(seattleStore;)
+
+
 
 function makeHeadings() {
   var table = document.getElementById('salesTable');
