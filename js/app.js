@@ -56,10 +56,47 @@ function hourlyTotals() {
     theTotal += dubaiStore.hourlyStoreSales[i];
     theTotal += parisStore.hourlyStoreSales[i];
     theTotal += limaStore.hourlyStoreSales[i];
+    // theTotal += newStore.calculateHourlyCookieSales[i];
     hourlyCookiesArr.push(theTotal);
   }
   return hourlyCookiesArr;
 }
+
+// function hourlyTotals(){
+//   var hourlyCookiesArr = [];
+//   for (var i = 0; i < hoursOfOperation.length; i++) {
+//     var theTotal = 0;
+//     // document.create 
+//     var tableCell = document.createElement('td');
+//     for (var j = 0; j < hourlyStoreSales.length; j++){
+//       theTotal+= hourlyStoreSales[j].totalHourlySales[i];
+//     }
+//     // theTotal += seattleStore.hourlyStoreSales[i];
+//     // theTotal += tokyoStore.hourlyStoreSales[i];
+//     // theTotal += dubaiStore.hourlyStoreSales[i];
+//     // theTotal += parisStore.hourlyStoreSales[i];
+//     // theTotal += limaStore.hourlyStoreSales[i];
+//     // hourlyCookiesArr.push(theTotal);
+//   }
+//   return hourlyCookiesArr;
+// }
+
+
+
+function addNewStore(newStore){
+  newStore.preventDefault();
+
+  var name = newStore.target.name.value;
+  var minCustomers = newStore.target.minCustomers.value;
+  var maxCustomers = newStore.target.maxCustomers.value;
+  var avgCookies = newStore.target.avgCookies.value;
+
+  var newStore = new Store (name, minCustomers, maxCustomers, avgCookies);
+  console.log(newStore);
+
+}
+
+addEventListener
 
 /*============New Constructor=================== */
 function CookieStore(name, minCustomers, maxCustomers, avgCookies, unorderedListTitle) {
@@ -69,6 +106,8 @@ function CookieStore(name, minCustomers, maxCustomers, avgCookies, unorderedList
   this.avgCookies = avgCookies;
   this.hourlyStoreSales = [];
   this.unorderedListTitle = unorderedListTitle;
+  // array.push(this);
+  // this.render();
 }
 
 CookieStore.prototype.calculateHourlyCookieSales = calculateHourlyCookieSales;
@@ -143,7 +182,8 @@ parisStore.calculateHourlyCookieSales();
 parisStore.renderSalesInTable();
 limaStore.calculateHourlyCookieSales();
 limaStore.renderSalesInTable();
+
+// newStore.calculateHourlyCookieSales();
+// newStore.renderSalesInTable();
+
 makeFooter();
-
-
-
