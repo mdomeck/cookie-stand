@@ -183,8 +183,11 @@ function renderHourlySalesInTable() {
     tableRow.appendChild(tableCell);
   }
   tableCell = document.createElement('td');
+  console.log(this.dailyTotal);
   tableCell.textContent = this.dailyTotal;
+  tableRow.appendChild(tableCell);
   table.appendChild(tableRow);
+
 }
 
 function makeFooter() {
