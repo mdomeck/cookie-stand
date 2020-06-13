@@ -67,25 +67,6 @@ function hourlyTotals() {
   return hourlyCookiesArr;
 }
 
-//TODO: total
-// var total = 0;
-// for (i = 0; i < 14; i++) {
-//   // total = total + hourlyData[i];
-//   total += hourlyCookiesArr[i];
-// }
-// var totalTableData = document.createElement('td');
-// totalTableData.textContent = total;
-// tableRow.appendChild(totalTableData);
-
-// storeTable.appendChild(tableRow);
-// }
-
-// var totalDailySales = []
-//  for(var i=0; i < 14, i++) {
-//    var totalSales = Math.floor(hourlyCookiesArr() + this.dailyTotal);
-//     totalSales.push(totalSales);
-
-
 var newStore = document.getElementById('newStoreForm');
 
 newStore.addEventListener('submit', addNewStore);
@@ -98,25 +79,14 @@ function addNewStore(newStore) {
   var maxCustomers = newStore.target.maxCustomers.value;
   var avgCookies = newStore.target.avgCookies.value;
 
-  var newStoreAdded = new CookieStore(name, minCustomers, maxCustomers, avgCookies);
-  console.log(newStoreAdded);
-  allStores.push(newStoreAdded);
+  var table= document.getElementById('salesTable');
+  table.deleteRow(-1);
 
-  newStoreAdded.calculateHourlyCookieSales();
+  new CookieStore(name, minCustomers, maxCustomers, avgCookies);
 
-  var table = document.getElementById('salesTable');
-  table.innerHTML = '';
-
-  makeHeadings();
-  newStoreAdded.renderHourlySalesInTable();
-  seattleStore.renderHourlySalesInTable();
-  tokyoStore.renderHourlySalesInTable();
-  dubaiStore.renderHourlySalesInTable();
-  parisStore.renderHourlySalesInTable();
-  limaStore.renderHourlySalesInTable();
   makeFooter();
-}
 
+}
 
 
 /*============New Constructor=================== */
@@ -128,9 +98,11 @@ function CookieStore(name, minCustomers, maxCustomers, avgCookies, unorderedList
   this.hourlyStoreSales = [];
   this.dailyTotal = 0;
   this.unorderedListTitle = unorderedListTitle;
-  // adding total function below
-  // this.allDailySales = allDailySales;
+  allStores.push(this);
+  this.calculateHourlyCookieSales();
+  this.renderHourlySalesInTable();
 }
+
 
 CookieStore.prototype.calculateHourlyCookieSales = calculateHourlyCookieSales;
 CookieStore.prototype.renderNameToPage = renderNameToPage;
@@ -138,17 +110,6 @@ CookieStore.prototype.renderHourTotalsToPage = renderHourTotalsToPage;
 CookieStore.prototype.dailyTotalCookieSales = dailyTotalCookieSales;
 CookieStore.prototype.renderHourlySalesInTable = renderHourlySalesInTable;
 
-var seattleStore = new CookieStore('Seattle', 23, 65, 6.3, 'SeattleTitle');
-var tokyoStore = new CookieStore('Tokyo', 3, 24, 1.2, 'TokyoTitle');
-var dubaiStore = new CookieStore('Dubai', 11, 38, 3.7, 'DubaiTitle');
-var parisStore = new CookieStore('Paris', 20, 38, 2.3, 'ParisTitle');
-var limaStore = new CookieStore('Lima', 2, 16, 4.6, 'LimaTitle');
-
-allStores.push(seattleStore);
-allStores.push(tokyoStore);
-allStores.push(dubaiStore);
-allStores.push(parisStore);
-allStores.push(limaStore);
 
 function makeHeadings() {
   var table = document.getElementById('salesTable');
@@ -206,17 +167,14 @@ function makeFooter() {
   table.appendChild(footerRow);
 }
 
-
+function initShops(){
+  new CookieStore('Seattle', 23, 65, 6.3, 'SeattleTitle');
+  new CookieStore('Tokyo', 3, 24, 1.2, 'TokyoTitle');
+  new CookieStore('Dubai', 11, 38, 3.7, 'DubaiTitle');
+  new CookieStore('Paris', 20, 38, 2.3, 'ParisTitle');
+  new CookieStore('Lima', 2, 16, 4.6, 'LimaTitle');
+}
 makeHeadings();
-seattleStore.calculateHourlyCookieSales();
-seattleStore.renderHourlySalesInTable();
-tokyoStore.calculateHourlyCookieSales();
-tokyoStore.renderHourlySalesInTable();
-dubaiStore.calculateHourlyCookieSales();
-dubaiStore.renderHourlySalesInTable();
-parisStore.calculateHourlyCookieSales();
-parisStore.renderHourlySalesInTable();
-limaStore.calculateHourlyCookieSales();
-limaStore.renderHourlySalesInTable();
+initShops();
 makeFooter();
 
