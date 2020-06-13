@@ -2,23 +2,40 @@
 
 body {
   background-color: rgb(204, 147, 141);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: Georgia, 'Times New Roman', Times, serif
   font-size: medium;
-
+  
   }
 
   header {
+    color: rgb(33, 104, 63);
     text-align: center;
     padding: 15px;
+    font-family: 'yellowtail', cursive;
+    font-size: 40px;
   }
 
 table {
   border: solid #201d64 1px;
   border-collapse: collapse;
   margin: 20px;
+  background-color: yellowgreen;
 }
 th, td {
   border: solid #201d64 1px;
   padding: 5px;
 }
 
+#table {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(68, 32, 68);
+}
+
+
+nav {
+  text-align: left;
+}
+
+#newStoreForm {
+  background-color: rgb(214, 214, 94);
+}
